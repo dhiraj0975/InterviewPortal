@@ -12,7 +12,7 @@ const tw = {
   textarea: 'w-full rounded-xl border border-gray-200 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100 outline-none px-3 py-2.5 bg-white h-28 resize-none',
   btnPrimary: 'inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-indigo-600 text-white hover:bg-indigo-700 transition disabled:opacity-60 disabled:cursor-not-allowed',
   btnGhost: 'inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-gray-200 text-gray-700 hover:bg-gray-50',
-  btnWarn: 'inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-amber-100 text-amber-800 hover:bg-amber-200',
+  btnWarn: 'inline-flex items-center cursor-pointer gap-2 px-3 py-2 rounded-lg bg-amber-100 text-amber-800 hover:bg-amber-200',
   btnDanger: 'inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-rose-100 text-rose-800 hover:bg-rose-200',
   btnSoft: 'inline-flex items-center gap-2 px-3 py-2.5 rounded-xl border border-gray-200 bg-white text-gray-700 hover:bg-gray-50 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100 outline-none',
   badgeBase: 'inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold',
@@ -184,7 +184,7 @@ export default function InterviewTrackerUI(){
   const PageBtn = ({p})=>(
     <button
       onClick={()=>setPage(p)}
-      className={`h-9 w-9 rounded-lg text-sm ${p===pageSafe?'bg-indigo-600 text-white':'bg-white border border-gray-200 text-gray-700 hover:bg-gray-50'}`}
+      className={`h-9 w-9 rounded-lg cursor-pointer text-sm ${p===pageSafe?'bg-indigo-600 text-white':'bg-white border border-gray-200 text-gray-700 hover:bg-gray-50'}`}
     >{String(p).padStart(2,'0')}</button>
   )
 
@@ -232,7 +232,7 @@ export default function InterviewTrackerUI(){
 
             {/* Primary CTA: Add Interview (opens form modal) */}
             <button className={tw.btnPrimary} onClick={openCreate}>
-              <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <svg className="h-5 cursor-pointer  w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v12M6 12h12"/>
               </svg>
               <span>Interview</span>
@@ -254,7 +254,7 @@ export default function InterviewTrackerUI(){
           <select className={tw.select + ' w-[46%]'} value={statusFilter} onChange={e=>{ setStatusFilter(e.target.value); setPage(1) }}>
             <option>All</option><option>In Progress</option><option>Selected</option><option>Rejected</option><option>Awaiting</option>
           </select>
-          <button className={tw.btnPrimary} onClick={openCreate}>+ Interview</button>
+          <button className={tw.btnPrimary }  onClick={openCreate}>+ Interview</button>
         </div>
 
         {/* Table card */}
@@ -330,9 +330,9 @@ export default function InterviewTrackerUI(){
                         </td>
                         <td className="py-2 px-1">
                           <div className="flex gap-1 justify-end">
-                            <button className={tw.btnSoft + ' text-xs px-2 py-1'} onClick={()=>openView(item)}>View</button>
-                            <button className={tw.btnWarn + ' text-xs px-2 py-1'} onClick={()=>openEdit(item)}>Edit</button>
-                            <button className={tw.btnDanger + ' text-xs px-2 py-1'} onClick={()=>onDelete(item._id)}>Delete</button>
+                            <button className={tw.btnSoft + ' text-xs cursor-pointer  px-2 py-1'} onClick={()=>openView(item)}>View</button>
+                            <button className={tw.btnWarn + ' text-xs cursor-pointer  px-2 py-1'} onClick={()=>openEdit(item)}>Edit</button>
+                            <button className={tw.btnDanger + ' text-xs cursor-pointer  px-2 py-1'} onClick={()=>onDelete(item._id)}>Delete</button>
                           </div>
                         </td>
                       </tr>
@@ -487,10 +487,10 @@ export default function InterviewTrackerUI(){
                         <label className="text-sm text-gray-700 font-medium">Rounds</label>
                         <input name="rounds" value={form.rounds} onChange={onChange} className={tw.input} placeholder="3" />
                       </div>
-                      <div>
+                      {/* <div>
                         <label className="text-sm text-gray-700 font-medium">Interview Mode</label>
                         <input name="interviewMode" value={form.interviewMode} onChange={onChange} className={tw.input} placeholder="Zoom/Phone" />
-                      </div>
+                      </div> */}
                     </div>
                   </motion.section>
 
@@ -672,10 +672,10 @@ export default function InterviewTrackerUI(){
                         <label className="text-sm text-gray-700 font-medium">Rounds</label>
                         <div className="mt-1 p-2 bg-white border border-gray-200 rounded-xl">{current.rounds}</div>
                       </div>
-                      <div>
+                      {/* <div>
                         <label className="text-sm text-gray-700 font-medium">Interview Mode</label>
                         <div className="mt-1 p-2 bg-white border border-gray-200 rounded-xl">{current.interviewMode}</div>
-                      </div>
+                      </div> */}
                     </div>
                   </motion.section>
 
