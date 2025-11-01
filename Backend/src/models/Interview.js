@@ -46,6 +46,9 @@ const interviewSchema = new mongoose.Schema({
   timestamps: true,
 });
 
+// Add index for faster sorting on createdAt
+interviewSchema.index({ createdAt: -1 });
+
 const Interview = mongoose.model("Interview", interviewSchema);
 
 export default Interview;

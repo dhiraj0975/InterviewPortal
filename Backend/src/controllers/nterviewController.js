@@ -18,10 +18,15 @@ export const addInterview = async (req, res, next) => {
 /* ✅ Get All Records */
 export const getAllInterviews = async (req, res, next) => {
   try {
-    const data = await Interview.find().sort({ createdAt: -1 });
+    const { page = 1, limit = 10 } = req.query;
+    const skip = (page - 1) * limit;
+    const data = await Interview.find().sort({ createdAt: -1 }).skip(skip).limit(parseInt(limit)).lean();
+    const total = await Interview.countDocuments();
     res.status(200).json({
       success: true,
-      total: data.length,
+      total,
+      page: parseInt(page),
+      limit: parseInt(limit),
       data,
     });
   } catch (error) {
