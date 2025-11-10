@@ -46,7 +46,7 @@ const interviewSchema = new mongoose.Schema({
   // ✅ New Field Added
   interviewSchedule: {
     type: String, // Example: "12/11/2025 10:30 AM"
-    required: false,
+    required: false, 
   }, 
 
 }, {

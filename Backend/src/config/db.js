@@ -5,7 +5,7 @@ dotenv.config();
 
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect(process.env.MONGO_URI || "mongodb+srv://dhirajkhobragade64_db_user:dhiraj@cluster0.onych1i.mongodb.net/", {
+    const conn = await mongoose.connect("mongodb+srv://dhirajkhobragade64_db_user:dhiraj@cluster0.onych1i.mongodb.net/"||  process.env.MONGO_URI ,  {
       maxPoolSize: 10, // Increase connection pool size for better performance
       serverSelectionTimeoutMS: 5000, // Timeout after 5s instead of 30s
       socketTimeoutMS: 45000, // Close sockets after 45s of inactivity
